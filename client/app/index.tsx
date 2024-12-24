@@ -3,6 +3,7 @@ import { View, Text, ImageBackground, Pressable, Image, Dimensions } from 'react
 import { Link } from 'expo-router';
 import "../global.css";
 
+
 export default function Index() {
   const windowHeight = Dimensions.get('window').height;
   
