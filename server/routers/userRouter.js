@@ -13,9 +13,14 @@ router.use(
 
 // Importing controller functions
 const { createUser, updateUser } = require('../controllers/usercontroller');
+const { login,  getProfile } = require('../controllers/authcontroller');
 
 // Defining routes
 router.post('/createuser', createUser);
 router.put('/updateuser/:id', updateUser);
+
+//auth
+router.post('/login', login)
+router.get('/getprofile',  getProfile)
 
 module.exports = router;
