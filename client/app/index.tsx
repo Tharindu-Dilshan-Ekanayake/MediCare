@@ -31,16 +31,12 @@ export default function Index() {
           Explore a variety of healthcare services, gain valuable medical insights, and enhance your well being with the best resources tailored just for you!
           </Text>
           <View>
-            <Link href='/login' className="w-full mb-8">
-              <Pressable className="items-center h-12 mx-4 bg-orange-500 rounded-xl w-[100px] flex justify-center">
-                <Text className="text-lg font-bold text-white">
-                  Explore
-                </Text>
-              </Pressable>
+          <Link href={'/login'} className="w-full mb-8">
+              <View className="items-center h-12 mx-4 bg-orange-500 rounded-xl w-[100px] flex justify-center">
+                <Text className="text-lg font-bold text-white">Explore</Text>
+              </View>
             </Link>
           </View>
-
-          
 
           {/* Footer Text */}
           <Text className="text-center text-gray-500 opacity-35">
