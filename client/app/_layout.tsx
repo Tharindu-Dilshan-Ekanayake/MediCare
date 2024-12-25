@@ -1,18 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import UserContextProvider  from '../context/userContext'
-import { Stack } from 'expo-router'
+import React from 'react';
+import { Stack } from 'expo-router';
+import UserContextProvider from '../context/userContext';
 
-const _layout = () => {
+export default function _layout() {
   return (
     <UserContextProvider>
-    <Stack
+      <Stack
         screenOptions={{
-            headerShown: false
+          headerShown: false, // Hides headers globally
         }}
-    />
+      />
     </UserContextProvider>
-  )
+  );
 }
-
-export default _layout

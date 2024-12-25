@@ -4,9 +4,12 @@ import Layout from './layout'
 
 export default function profilesettings() {
   return (
-    <View>
+    <View className='h-full '>
       <Text>profilesettings</Text>
-      <Layout/>
+      
+      <View className='absolute w-full bottom-6'>
+          <Layout />
+      </View>
     </View>
   )
 }

@@ -1,11 +1,13 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage for React Native
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native'; // Import navigation for React Native
+import { useRouter } from 'expo-router'; // Use expo-router's router
 
 export interface User {
   name: string;
   email: string;
-  [key: string]: any; // Add this if your user object may have other properties
+  [key: string]: any; // For additional user properties
 }
 
 interface UserContextProps {
@@ -25,22 +27,24 @@ interface UserContextProviderProps {
 export default function UserContextProvider({ children }: UserContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const navigation = useNavigation(); // React Navigation
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
-      const storedUser = await AsyncStorage.getItem('user'); // Use AsyncStorage to get stored data
+      const storedUser = await AsyncStorage.getItem('user');
       if (storedUser) {
         try {
           setUser(JSON.parse(storedUser));
         } catch (err) {
           console.error('Error parsing stored user data:', err);
-          await AsyncStorage.removeItem('user'); // Remove if parsing fails
+          await AsyncStorage.removeItem('user');
         }
       } else {
         try {
-          const { data } = await axios.get<User>('http://192.168.43.64:4000/getprofile'); // Adjust URL as needed
+          const { data } = await axios.get<User>('http://192.168.43.64:4000/getprofile');
           setUser(data);
-          await AsyncStorage.setItem('user', JSON.stringify(data)); // Use AsyncStorage to store user data
+          await AsyncStorage.setItem('user', JSON.stringify(data));
         } catch (err) {
           console.error('Error fetching user data:', err);
         }
@@ -53,10 +57,10 @@ export default function UserContextProvider({ children }: UserContextProviderPro
 
   const logout = async () => {
     try {
-      await axios.post('/user/logout');
+      await axios.post('http://192.168.43.64:4000/logout');
       setUser(null);
-      await AsyncStorage.removeItem('user'); // Remove user data from AsyncStorage
-      window.location.href = '/'; // This is not relevant for React Native, so you may remove it
+      await AsyncStorage.removeItem('user'); // Clear stored user data
+      router.push('/login'); // Navigate to the Login screen
     } catch (err) {
       console.error('Error logging out:', err);
     }
