@@ -89,7 +89,17 @@ const getProfile = async (req, res) => {
     });
 }
 
+//logout
+const logoutUser = async (req, res) => {
+    try {
+        res.json({ message: 'User logged out successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 module.exports = {
     login,
-    getProfile
+    getProfile,
+    logoutUser
 }

@@ -1,25 +1,31 @@
-import { View, Text } from 'react-native';
-import React, { useContext } from 'react';
-import { UserContext } from '../../context/userContext'; // Import UserContext
+import { View, Text, Button } from 'react-native';
+import React from 'react';
+
 import Layout from '@/app/userScreen/layout';
 import "../../global.css";
+import Tips from '@/components/tips';
+//import Chart from '@/components/chart';
+import Booking from '@/components/booking';
+import CombinedComponent from '../components/homeCompo';
+
 
 export default function Home() {
-  const { user } = useContext(UserContext); // Access user from context
+  
 
   return (
-    <View>
-      <Text>Home</Text>
-      {/* Check if user exists and display user.fname */}
-      {user ? <Text>Welcome, {user.fname}</Text> : <Text>Loading...</Text>}
-      <Text>{user.lname}</Text>
-      <Text>{user.email}</Text>
-      <Layout/>
-
-      <View className='flex justify-between'>
-        <Text className='text-blue-500'>Home</Text>
-        <Text>Home</Text>
+    <View className=''>
+      <View className='mt-12 '>
+        
+        <CombinedComponent />
+       
+        
       </View>
+
+      <View className='absolute w-full bottom-6'>
+        <Layout />
+      </View>
+      
+      
     </View>
   );
 }
