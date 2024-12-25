@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage for React Native
 
 export interface User {
   name: string;
@@ -27,19 +28,19 @@ export default function UserContextProvider({ children }: UserContextProviderPro
 
   useEffect(() => {
     const fetchUser = async () => {
-      const storedUser = localStorage.getItem('user');
+      const storedUser = await AsyncStorage.getItem('user'); // Use AsyncStorage to get stored data
       if (storedUser) {
         try {
           setUser(JSON.parse(storedUser));
         } catch (err) {
           console.error('Error parsing stored user data:', err);
-          localStorage.removeItem('user');
+          await AsyncStorage.removeItem('user'); // Remove if parsing fails
         }
       } else {
         try {
-          const { data } = await axios.get<User>('http://192.168.43.64:4000/getprofile');
+          const { data } = await axios.get<User>('http://192.168.43.64:4000/getprofile'); // Adjust URL as needed
           setUser(data);
-          localStorage.setItem('user', JSON.stringify(data));
+          await AsyncStorage.setItem('user', JSON.stringify(data)); // Use AsyncStorage to store user data
         } catch (err) {
           console.error('Error fetching user data:', err);
         }
@@ -54,8 +55,8 @@ export default function UserContextProvider({ children }: UserContextProviderPro
     try {
       await axios.post('/user/logout');
       setUser(null);
-      localStorage.removeItem('user');
-      window.location.href = '/';
+      await AsyncStorage.removeItem('user'); // Remove user data from AsyncStorage
+      window.location.href = '/'; // This is not relevant for React Native, so you may remove it
     } catch (err) {
       console.error('Error logging out:', err);
     }
@@ -63,7 +64,7 @@ export default function UserContextProvider({ children }: UserContextProviderPro
 
   const updateUser = (userData: User) => {
     setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+    AsyncStorage.setItem('user', JSON.stringify(userData)); // Update AsyncStorage
   };
 
   return (
