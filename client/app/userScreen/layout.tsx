@@ -48,7 +48,7 @@ export default function Layout() {
           iconName="home"
         />
         <NavButton 
-          path="/userScreen/book" 
+          path="/userScreen/doctor" 
           icon={Fontisto} 
           iconName="doctor"
         />

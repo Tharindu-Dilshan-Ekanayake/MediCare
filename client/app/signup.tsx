@@ -17,6 +17,7 @@ import { useRouter } from 'expo-router';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
+
 export default function Signup() {
     const router = useRouter();
     const scaleValue = new Animated.Value(1);
@@ -30,6 +31,7 @@ export default function Signup() {
         password: '',
         dob: '',
         role: 'user',
+        image: '',
     });
 
     const onPressIn = () => {
