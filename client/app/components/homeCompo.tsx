@@ -62,7 +62,7 @@ const CombinedComponent = () => {
         urlToImage: article.urlToImage || 'https://via.placeholder.com/150',  // Default placeholder image
       }));
       setArticles(formattedArticles);
-      setFilteredArticles(formattedArticles.slice( 6, 11)); // Limit to 5 articles initially
+      setFilteredArticles(formattedArticles.slice( 7, 11)); // Limit to 5 articles initially
     } catch (error) {
       console.error('Error fetching health news:', error);
       setError('Failed to fetch health news. Please try again later.');
