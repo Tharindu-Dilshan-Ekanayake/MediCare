@@ -12,7 +12,21 @@ export default function profilesettings() {
         <SettingsHead/>
       <View>
         {/* update profile */}
+        <View className='items-center '>
+          <Text>First Name :</Text>
         <Text>{user.fname}</Text>
+        </View>
+        
+        <View className='items-center '>
+          <Text>Lqst Name :</Text>
+        <Text>{user.lname}</Text>
+        </View>
+
+        <View className='items-center '>
+          <Text>Email :</Text>
+        <Text>{user.email}</Text>
+        </View>
+        
       </View>
         
 
