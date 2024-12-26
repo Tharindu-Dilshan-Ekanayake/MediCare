@@ -55,7 +55,8 @@ const updateUser = async (req, res) => {
             phone_number,
             password,
             role,
-            dob
+            dob,
+            image
         };
 
         if (image) {
