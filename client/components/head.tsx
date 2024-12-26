@@ -86,7 +86,7 @@ const Head = ({ onMenuPress, onNotificationPress }) => {
                                 ? { uri: user.image }
                                 : defaultImage
                                     ? { uri: defaultImage }
-                                    : require('../assets/images/bg/Login.png')
+                                    : require('../assets/images/bg/logo1.png')
                         }
                         className="w-12 h-12 border-2 border-orange-400 rounded-full"
                         resizeMode="cover"

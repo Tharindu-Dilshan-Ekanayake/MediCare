@@ -24,6 +24,8 @@ const login = async (req, res) => {
                 fname: user.fname,
                 lname: user.lname,
                 role: user.role,
+                phone_number: user.phone_number,
+                dob: user.dob,
             }, process.env.REACT_APP_JWT_SECRET, {}, (err, token) => {
                 if (err) throw err;
                 res.json({
@@ -34,6 +36,8 @@ const login = async (req, res) => {
                         lname: user.lname,
                         email: user.email,
                         role: user.role,
+                        phone_number: user.phone_number,
+                        dob: user.dob,
                     }
                 });
             });
