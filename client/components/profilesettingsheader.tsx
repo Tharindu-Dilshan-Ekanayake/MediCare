@@ -4,11 +4,11 @@ import { UserContext } from '../context/userContext';
 import { Ionicons } from '@expo/vector-icons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-const SettingsHead = ({ onMenuPress, onNotificationPress }) => {
+const SettingsHead = ({ }) => {
     const { user, logout } = useContext(UserContext);
     
     const [greeting, setGreeting] = useState('');
-    const [hasNotifications, setHasNotifications] = useState(false); // For notification badge
+    
 
     useEffect(() => {
         updateGreeting();
@@ -43,7 +43,7 @@ const SettingsHead = ({ onMenuPress, onNotificationPress }) => {
                         {greeting},
                     </Text>
                     <Text className="text-xl font-bold text-orange-500">
-                        {user?.fname || 'Guest'}
+                        {user.fname }
                     </Text>
                 </View>
             </View>
@@ -58,9 +58,14 @@ const SettingsHead = ({ onMenuPress, onNotificationPress }) => {
                         <AntDesign name="logout" size={24} color="white" />
                     </View>
                     
-                    {hasNotifications && (
-                        <View className="absolute w-2 h-2 bg-red-500 rounded-full top-1 right-1" />
-                    )}
+                    
+                </Pressable>
+                 {/* Logout Button */}
+                <Pressable
+                    onPress={logout}
+                    className="px-4 py-2 bg-red-500 rounded-lg"
+                >
+                    <Text className="font-semibold text-white">Logout</Text>
                 </Pressable>
             </View>
         </View>

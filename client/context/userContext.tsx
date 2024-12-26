@@ -46,7 +46,7 @@ export default function UserContextProvider({ children }: UserContextProviderPro
           setUser(data);
           await AsyncStorage.setItem('user', JSON.stringify(data));
         } catch (err) {
-          console.error('Error fetching user data:', err);
+          
         }
       }
       setLoading(false);

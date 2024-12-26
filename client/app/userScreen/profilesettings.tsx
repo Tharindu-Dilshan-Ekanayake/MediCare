@@ -1,15 +1,15 @@
-import { View, Text, Image, Button } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, {useContext} from 'react'
 import Layout from './layout'
-import SettingsHead from '@/components/profilesettingsheader'
 import { UserContext } from '../../context/userContext';
+import Head from '@/components/head';
 
 export default function profilesettings() {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   return (
     <View className='h-full '>
       <View className='mt-12 '>
-        <SettingsHead/>
+        <Head/>
       <View>
         {/* update profile */}
         
@@ -66,7 +66,15 @@ export default function profilesettings() {
         <View className='bg-[#298D80] w-[300px] h-12 justify-center mx-auto rounded-lg mt-2 flex'>
           <Text className='text-center text-white'>Edit details</Text>
         </View>
-        
+        <View>
+          {/* Logout Button */}
+          <TouchableOpacity
+            className="bg-orange-500 w-[300px] h-12 justify-center mx-auto rounded-lg mt-2 flex"
+            
+          >
+            <Text className="text-center text-white">Reset Password</Text>
+          </TouchableOpacity>
+        </View>
       </View>
         
 
