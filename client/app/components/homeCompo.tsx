@@ -41,8 +41,7 @@ const CombinedComponent = () => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
-  const API_KEY = 'YOUR_NEWS_API_KEY'; // Replace with your News API key
-
+ 
   const fetchNews = async () => {
     setLoading(true);
     setError('');
@@ -63,7 +62,7 @@ const CombinedComponent = () => {
         urlToImage: article.urlToImage || 'https://via.placeholder.com/150',  // Default placeholder image
       }));
       setArticles(formattedArticles);
-      setFilteredArticles(formattedArticles.slice(9, 20)); // Limit to 5 articles initially
+      setFilteredArticles(formattedArticles.slice( 6, 11)); // Limit to 5 articles initially
     } catch (error) {
       console.error('Error fetching health news:', error);
       setError('Failed to fetch health news. Please try again later.');
@@ -155,7 +154,7 @@ const CombinedComponent = () => {
   };
 
   return (
-    <View className='flex flex-col h-full p-4'>
+    <View className='flex flex-col h-full px-4'>
       {/* Calendar Section */}
       <View className=' h-1/3'>
         <View style={styles.calendarContainer}>
@@ -192,8 +191,8 @@ const CombinedComponent = () => {
       </View>
 
       {/* Health News Section */}
-      <View className='h-[500px] pt-[100px] '>
-        <Text className="my-2 text-2xl font-bold text-center text-[#298D80]">Health News</Text>
+      <View className='h-[500px] pt-[40px] '>
+        <Text className="my-2 text-xl font-bold text-start text-[#19191A] pb-1 ">News Update</Text>
 
         {error && <Text className="mb-4 text-center text-red-500">{error}</Text>}
 
